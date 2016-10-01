@@ -26,8 +26,7 @@ Discovery:
 * Any matching class located in the "Controllers" folder
 * Any class Inherited from Microsoft.AspNetCore.Mvc.Controllers
 
-
-## Asp.Net MVC
+## Asp.Net MVC
 
 * The controller is responsible for initial processing of a request.
 * Business decision should be performed within the a domain model.
