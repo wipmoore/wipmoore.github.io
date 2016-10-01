@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ASP .Net Core Views"
+title:  "ASP .Net Core MVC Views"
 date:   2016-09-24 23:36:00 +0100
 categories: jekyll update
 ---
