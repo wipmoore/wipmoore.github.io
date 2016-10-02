@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 * Model Binding
-* Binding errors an model validation
+* Binding errors and model validation
 * Model state
 
 
@@ -19,12 +19,14 @@ categories: jekyll update
    * Route values
    * Query string
 
-**Note** if the model data should come from the body which is not
-x-www-url-formencoded then you need to specify that the model binder uses the
-body explicitly with the [FromBody] attribute but you will need an
-IInputFormatter that supports the input format.  If [FormBody] attribute is used
-and post is x-www-url-formencoded then the model will not have an properties
-bound as by default there is is not a formencoded IInputFormatters ( _Presumably you could add one_ ).
+**Note** _if the model data should come from the body of a request that is not
+x-www-url-formencoded then you need to stipulate that the model binder uses the
+body explicitly with the [FromBody] attribute.  There will need to be an
+IInputFormatter registered that supports the request format, by default there is
+just a JSON formatter.  If the [FormBody] attribute is specified and the request
+is x-www-url-formencoded then the model will not have any properties bound as by
+default there is not a formencoded IInputFormatters_
+( _Presumably you could add one_ ).
 
 ```
 public class PersonController
@@ -41,10 +43,10 @@ public class PersonController
 }
 ```
 
-Classes that are created as part of the default model binding must:
+For the model binder to be able to support creating a class it must:
 
 * Have a pubic default constructor
-* All bound members must be publicly writable ( **Note**  need to check if they can be fields as we tried that once and it all went horribly wrong. )
+* All bound members must be publicly writable ( **Note**  _need to check if they can be fields as we tried that once and it all went horribly wrong._ )
 
 
 ### Customising model binding behaviour
@@ -66,28 +68,30 @@ Validation is performed as part of the model binding process.  There are three t
 errors:
 
 * _Binding error_ missing data, non nullable fields not supplied.
-* _Binding error_ incompatible data, e.g. a value that can not be converted to a date
+* _Binding error_ incompatible data, e.g. a value that can not be converted to a date.
 * _Validation error_ where the supplied data does not conform to a validation attribute.
 
-After the model binder has finished binding the data to the properties if at
-least one value was bound to the model then all validators are run.  The model
-model's metadata is used to identify the validators, any failed validation
-rules are placed into the model state.
+After the model binder has finished binding data to the properties if at
+least one value was bound to the model then all validators are run.  The model's
+metadata is used to identify the validators, any error messages from failed
+validation rules are placed into the model state.
 
-**Note** On a project with complex validation scenarios the Mvc
-validation system did not seam to be sufficient. We needed to validate:
+**Note** _On a project with complex validation scenarios the Mvc
+validation system did not seam to be sufficient. We needed to validate:_
 
-* that the fields in the request were valid in themselves.
-* that the request was valid in itself ( e.g. if its a date range the start date is before the end date )
-* that the request is valid against the context of the world.  ( e.g. you are allowed to apply that request to the world in its current state )
+* _that the fields in the request were valid in themselves._
+* _that the request was valid in itself ( e.g. if its a date range the start date is before the end date )_
+* _that the request is valid against the context of the world.  ( e.g. you are allowed to apply that request to the world in its current state )_
 
-It was also required that any validation that could be performed was. So if you
+_It was also required that any validation that could be performed was. So if you
 a request that had a missing name property but the date range was valid you then
-needed to see if the date range could have been applied to the world.  
+needed to see if the date range could have been applied to the world._
 
-As such we abandoned the standard model validation and accepted that all
+_As such we abandoned the standard model validation and accepted that all
 validation was the responsibility of the service layer which returned a Result
-monad.
+monad._
+
+### Custom validators
 
 The ValidationAttribute class can be used to create custom validation, you just
 need to inherit from it and override the IsValid method.
