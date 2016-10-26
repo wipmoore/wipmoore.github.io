@@ -7,6 +7,8 @@ categories: jekyll update
 
 <table>
   <tbody>
+    <tr><td>code .</td><td> - Open visual studio code with the current folder open</td></tr>
+    <tr><td>code --list-extensions</td><td> - Lists the extensions that have been installed.</td></tr>
     <tr><td>cmd+shift+p</td><td> - Command Palette</td></tr>
     <tr><td>cmd+p</td><td> - Navigate to file</td></tr>
     <tr><td>cmd+p ?</td><td> - List actions available</td></tr>
@@ -60,6 +62,16 @@ Explains what a method does.
 ### Complete Word
 
 Can complete a variable/member name after enough charaters have been typed to make it disambiguous. 
+
+## Install paths
+
+**Note** - These are all for the osx.
+
+<table>
+  <tbody>
+    <tr><td><em>User settings file</em></td><td> - ~/Application Support/Code/User/Settings.json</td></tr>
+  </tbody>
+</table>
 
 ## References
 
