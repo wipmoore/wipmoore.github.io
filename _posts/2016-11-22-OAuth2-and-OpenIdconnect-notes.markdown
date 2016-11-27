@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "OAuth2 and OpenId Connect"
-date:   2016-10-22 15:48:00 +0100
+date:   2016-11-22 15:48:00 +0100
 categories: jekyll update
 ---
 
