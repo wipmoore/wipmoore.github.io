@@ -10,10 +10,9 @@ To use Ninject as the dependecy resolver for WebApi projects you need to:
 1. Install the following packages:
 
 * Ninject
-* Ninject.Common
-* Ninject.Common.WebHost
-* Ninject.WebApi
-
+* Ninject.Web.Common
+* Ninject.Web.Common.WebHost
+* Ninject.Web.WebApi
 
 2. Modify the _NinjectWebCommon.CreateKernel_ method and register an NinjectDependencyResolver as the default dependency resolver. 
 
