@@ -34,7 +34,7 @@ These are levels that define how isolated the Isolation property of a transactio
 
 ### Read committed
 
-* Statements can not read data thtat has been modified but not commited by other transactions  ( No dirty reads).
+* Statements can not read data that has been modified but not commited by other transactions  ( No dirty reads).
 
 **Note** Data can be changed by other transactions between individual statements within the current transaction resulting in nonrepeatable reads ( Phantom Data ).
 
