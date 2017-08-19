@@ -84,7 +84,7 @@ Threat modeling is a procedure for optimizing security by identifying objectives
       * [CLAIR](https://github.com/coreos/clair) can scan images as part of the build pipeline.
 
   * Patch and re-issue.
-    * Software to check for unpatched version ( e.g. [Upguard](https://www.upguard.com/solutions) ).
+    * Software to check for unpatched version ( e.g. Upguard ).
     * Patch and re-issue once a week.
 
 
@@ -115,7 +115,7 @@ Threat modeling is a procedure for optimizing security by identifying objectives
   * What is the wording of the response.
   * Who the response comes from.
   * How the response is communicated ( email, website, etc ).
-  * These things are hard to decided in the emotional aftermath of a breach.
+  * These things are hard to decided in the emotional aftermath of an attack.
 
 
 ## Recovery
@@ -131,4 +131,4 @@ Threat modeling is a procedure for optimizing security by identifying objectives
   * Review periodically.
 
 
-* **It is generally the system that failed rather than an individual.**.
+* **It is generally the system that failed rather than an individual.**
