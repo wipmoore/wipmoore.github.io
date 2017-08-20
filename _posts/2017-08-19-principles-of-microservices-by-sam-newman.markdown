@@ -89,7 +89,7 @@ They are about independent evolution, each service is independently releasable. 
 
 ### Hide implementation details
 * Services must be able to evolve independently of each other.
-* Data is shared via an api **not** a database.
+* Data is shared via an API **not** a database.
 * Services have their own concept of domain entities.
 * Instance identity is common across all services.  e.g. A specific customer should have the same id across all services even though the model of a customer differs in each service.
 * DTO that pass between services are not the internal domain model.
@@ -120,7 +120,7 @@ They are about independent evolution, each service is independently releasable. 
     * Need to give the consumer time to change.
     * Co-existing endpoint:
       * A breaking API change results in a new endpoint.
-      * Old endpoint will be retired but gives consumers time.
+      * Old endpoints will be retired but gives consumers time.
   * When you can not break the contract:
     * Brand new version of the service.
     * Increases maintenance cost.
