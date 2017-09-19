@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ritch Hickey's Simple made easy.</title>
+
+		<meta name="description" content="Rich Hickey's Simple made easy.">
+		<meta name="author" content="Paul Mooore">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/css/reveal/reveal.min.css">
+		<link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/lib/reveal/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '/css/reveal/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/lib/reveal/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h1>Rich Hickey's Simple made Easy</h1>
+				</section>
+
+				<section>
+					<section>
+						<h3>Simple is not the same as easy</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								Simplicity is a measure of the ability to change a system over time.
+							</li>
+							<li class="fragment">
+								Ease is a measurea of energy required to achieve a task.
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Simple and Complex</h3>
+					</section>
+					<section>
+						<ul>
+							<li>Simple means one fold.</li>
+							<li class='fragment'>Complex means many folds.</li>
+							<li class='fragment'>They are opposites.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What is complexity?</h3>
+					</section>
+
+					<section>
+						<p>
+							Complexity is seen in the sense of how you create a complex pattern or structure by braiding (plaiting) or weaving.
+						</p>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								Braiding interlocks strands (components/concerns) together.
+							</li>
+							<li class='fragment'>
+								Interlocking forms tight bonds between the strands.
+							</li>
+						</p>
+					</section>
+
+					<section>
+
+						<ul>
+							<li>
+								Tight bonding between components/concerns is the problem.
+							</li>
+							<li class='fragment'>
+								It causes them to become indistinguishable from each other.
+							</li>
+						</ul>
+						<p>
+
+						</p>
+					</section>
+
+					<section>
+						<h3>What are the implication of complexity?</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								We can not comprehend in isolation.
+							</li>
+							<li class='fragment'>
+								You have to understand it as a whole.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What does this mean for us?</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								Our capacity to comprehend complexity is finite and quite limited.
+							</li>
+							<li class='fragment'>
+								Statistically we do not vary that much.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Why does this matter?</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								We have to be able to analyse a system to change it.
+							</li>
+							<li class='fragment'>
+								Type checking and automated test are not enough.
+							</li>
+							<li class='fragment'>
+								Ignoring complexity is not an option.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Types of complexity</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								<strong>Essential complexity</strong>, complexity that is part of the problem you are solving.
+							</li>
+							<li class='fragment'>
+								<strong>Accidental complexity</strong>, complexity introduced via the tools and constructs we use.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>
+							The aim is to <strong>minimize</strong> accidental complexity.
+						</p>
+					</section>
+
+					<section>
+						<h3>How do we introduce complexity?</h3>
+					</section>
+
+					<section>
+						<p><strong>Braiding</strong><p>
+						<ul>
+							<li class='fragment'>
+								Multiple concerns in a single component.
+							</li>
+							<li class='fragment'>
+							  Tightly bonding concerns.
+						 	</li>
+						</ul>
+					</section>
+
+					<section>
+						<p><strong>Complex constructs</strong><p>
+
+						<ul>
+							<li class='fragment'>
+								<strong>State</strong>, conflates value and time.
+							</li>
+
+							<li class='fragment'>
+								<strong>Objects</strong>, conflates idenity and value.
+							</li>
+
+							<li class='fragment'>
+								<strong>Syntax</strong>, conflates meaning and order.
+							</li>
+
+							<li class='fragment'>
+								<strong>Inheritance</strong>, conflates types.
+							</li>
+
+							<li class='fragment'>
+								<strong>Variables</strong>, conflates value and time.
+							</li>
+
+							<li class='fragment'>
+								<strong>Actors</strong>, conflates what and who.
+							</li>
+
+							<li class='fragment'>
+								<strong>ORM</strong>, Oh my giddy aunt.
+							</li>
+
+							<li class='fragment'>
+								<strong>Conditionals</strong> conflate rules and program organisation.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>How do we make things simple?</h3>
+					</section>
+
+					<section>
+						<p><strong>Chose simple constructs.</strong></p>
+
+ 						<p class='fragment'>
+							They allow you to focus on what the software is supposed to do rather than how to do it.
+						</p>
+					</section>
+
+					<section>
+
+						<p><strong>Examples of simple constructs:</strong></p>
+						<ul>
+							<li class='fragment'>Values.</li>
+							<li class='fragment'>Persistent collection.</li>
+							<li class='fragment'>Standard data strcutures.</li>
+							<li class='fragment'>Pure functions.</li>
+							<li class='fragment'>Declarative data manipulation.</li>
+							<li class='fragment'>Consistency ( transactions and values )</li>
+						</ul>
+					</section>
+
+					<section>
+						<p><strong>Abstraction:</strong> ( write simple stuff )</p>
+
+						<ul>
+							<li class='fragment'>
+								Abstraction means to draw things away, to draw away from the physical nature of something.
+							</li>
+							<li class='fragment'>
+								It is not hiding stuff.
+							</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h3>Easy and Hard</h3>
+					</section>
+
+					<section>
+						<p>
+							The property being measured is the amount of effort or time that is needs to complete a task.
+						</p>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								Ease is subjective.
+							</li>
+							<li class='fragment'>
+								What is easy for one person may be hard for another and vice versa.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+							<h3>What makes things hard?</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>Things not being near at hand.</li>
+							<li class='fragment'>Lack of familiarity.</li>
+							<li class='fragment'>Things beyond our capabilities.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>How do we make things easy.</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>Make things close to hand.</li>
+							<li class='fragment'>Learn</li>
+							<li class='fragment'>Bring the problem within our capabilities.
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Conclusion</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>
+								Simplicity and Ease are not the same concept.
+							</li>
+							<li class='fragment'>
+								Simplicity is about efficiency (Reduction of Waste).
+							</li>
+							<li class='fragment'>
+								Ease is about productivity (Quickly getting stuff done).
+							</li>
+							<li class='fragment'>
+								They are both necessary conditions for efficiency.
+							</li>
+						</ul>
+					</section>
+
+				</section>
+			</div>
+
+		</div>
+
+		<script src="/lib/reveal/js/head.min.js"></script>
+		<script src="/js/reveal/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/lib/reveal/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/plugin/reveal/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/reveal/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/reveal/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/plugin/reveal/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/plugin/reveal/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

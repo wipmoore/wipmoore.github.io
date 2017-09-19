@@ -227,3 +227,7 @@ Generally things are hard when we have not got the appropriate tools, we are wor
 Ease is about being productive the easier thing are the more tasks we are able to complete.
 
 Efficiency is high productivity and low waste, focusing on easy provides productivity and focusing on simplicity provides the low waste.  So to be efficient we need to pay attention to both easy and simplicity with a higher emphasis on simplicity as it is harder to attain and we only have finite capacity to deal with the consequences of ignoring it.
+
+## Appendices
+
+* [My Presentation](/presentations/simple-made-easy)
