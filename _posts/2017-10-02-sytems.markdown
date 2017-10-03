@@ -1,0 +1,94 @@
+---
+layout: post
+title:  "Systems"
+date:   2017-10-02 20:00:00 +0100
+categories: designConcepts
+---
+
+### Why do I think this is important
+
+Systems theory is important to people involved in software development because we build systems and in general an understanding of the subject area that you work in is a prerequisite to being able to do it well. Considering its prevalence in what we do it is a topic that we do not seem to have much of an understanding of.  This contributes to us being bad at building software, it is generally late or significantly reduced in scope or both and the software that we do build is of low quality the features that are delivered rarely meet even the basic needs of the users, the functionality that is delivered adds to rather than reduces the amount of stress a user experiences when trying to accomplish a task and it has a tendency to degrade as we try to enhance or correct it.
+
+
+### What is a system
+
+A system is a set of interrelating and independent components that server some purpose.  The respiratory system's purpose is to provide the oxygen needed to convert stored energy into working energy and to remove carbon dioxide which is a byproduct of the conversion process.  To achieve this it is composed of various components each with a specific purpose needed by the respiratory system as a whole to perform it main functions.  
+
+All systems have common properties, of which the most interesting for the purpose of this talk are emergent properties and entropy.
+
+Emergent properties (from the latin meaning arising from) are properties of a system provided by the combination of multiple components in a system, rather than a product of an individual component of the system.  The emergent properties of the respiratory system are to provide oxygen and remove carbon dioxide, no single component of the respiratory system in isolation can provide these functions it requires all the components working together for them to be fulfilled.
+
+Entropy is the measure of disorder, the more disordered as system is the less work that it can do.
+
+
+### Types of system
+
+Systems have boundaries everything inside the boundary is a component of the system and everything outside the boundary is known as the environment or surroundings. This distinctions is important for identifying what type of system you are dealing with.  
+
+There are three types of system:
+
+* **Isolated**, nothing is exchanged between the system and its environment.
+* **Closed**, energy is exchanged between the systems and its environment.
+* **Open**, matter and energy are exchanged between the system and its environment.
+
+
+### How we understand things
+
+We appear to use two type of approach to understand things reductive or holistic.  A reductive approach uses a mechanical view of the world where you isolate a component and understand it in isolation, this approach is used in chemistry and physics where they view systems as closed with tendency towards disorder.  A holistic approach uses systematic view where to understand something you need to understand the relationships it has between its peers, this approach is used a in biology to understand natural systems where they view systems as open with a tendency towards order.
+
+It is the tendency of natural systems towards order that is interesting, can we exploit that in the way we build systems.  This includes the processes and practices as well as the technical structures that we used in the construction of software.  It is worth highlighting that software systems are an emergent property of a software development process.
+
+
+
+### Characteristics of Natural systems
+
+Natural systems have the following characteristics:
+
+* Redundancy
+* Heterogeneity
+* Modularity
+* Adaptation
+* Prudence
+* Embeddedness
+
+
+#### Redundancy.
+
+The inclusion of extra components which are not strictly necessary to protect against failure in other components.
+
+
+#### Heterogeneity.
+
+Different types of element makes it possible to react to unexpected change and avoid correlated response across a system, which can lead to a total systems failure.
+
+
+#### Modularity.
+
+Separate modules, loosely linked, act like circuit breakers to help prevent the collapse of a system. With modularity one portion can sustain damage while the integrity of others is preserved. All else being equal, a highly uncertain situation favours a network of loosely linked parts rather than a centralised and tightly integrated system.
+
+Breaking an homogenous lump into lots of smaller lumps increased resilience and throughput if the processing of each lump is run independently and concurrently.
+
+
+#### Adaptation.
+
+Rapid adjustment to new circumstances protects a system against the negative effects of change. In the case of simple change, planned responses can mitigate disruption if the system is sufficiently flexible and agile. For complex change, when the right response may not be analytically knowable, an adaptive approach comprising experimentation, selection, and amplification of successful outcomes can be effective.
+
+
+#### Prudence.
+
+In natural systems species that are highly adapted to exploit environmental niches tend to find modest changes to the environment severely threatening, saber-toothed tigers and woolly mammoth being a common cited example of this.
+
+
+#### Embeddedness.
+
+Reciprocity and mutual benefit between levels are essential for stability and continuity.
+
+
+### Evolution
+
+Evolution via natural selection is the process by which natural systems develop.  Essentially within an environment there is intra and inter variation and the variations that are most adapted to survive in an environment thrive where and the others then to wither.
+
+
+## Appendices
+
+* [My Presentation](/presentations/systems)
