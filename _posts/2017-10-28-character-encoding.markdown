@@ -6,13 +6,13 @@ categories:
 ---
 ## ASCII
 
-American standard code form information interchange is an eight bit code ( 256 representations 0-255) that represents all characters in the english alphabet plus some extra characters.  
+American standard code form information interchange is an eight bit code ( 256 representations 0-255) that represents all letters in the English alphabet plus some extra characters.  
 
-As there are only twenty six characters in the english alphabet with two representations upper and lower case for each character even with the standard extra characters added it only uses 127 of the 255 possible characters. This lead to various different creative minds deciding to use the remaining characters for their own needs. The problem with people inventing their own extensions to the character set is that the interpretation of what characters had been written was in the hands of the receiver regardless of what the person who wrote it intended.  This results in different people seeing different messages and it being random luck if you see the text as the author intended.
+As there are only twenty six letters each with two representations upper and lower case in the English alphabet even with the standard extra characters added only 127 of the 255 possible characters were used. This lead to various different creative minds deciding to use the remaining characters for their own needs. The problem with people inventing their own extensions to the character set is that the interpretation of what characters had been written was in the hands of the receiver regardless of what the person who wrote it intended.  This results in different people seeing different messages and it being random luck if you see the text as the author intended.
 
-To solve this problem the American National Standards Institute (ANSI) came up with the concept of standard code pages.  The first 128 (0-127) characters were standard across all code pages, the remaining characters were dependent on the code page that you had chose to interpret a text file with.
+To solve this problem the American National Standards Institute (ANSI) came up with the concept of standard code pages.  The first 128 (0-127) characters were standard across all code pages, the remaining characters were dependent on the code page used to interpret a text file with.  The benefit was that the code pages were standardised.
 
-While code pages solved the problem of being able to correctly represent an author's text so long as you know what code page they had use there were still problems.  You could not include characters from different code pages in the same document, for certain alphabets 256 characters are not enough.
+While code pages solved the problem of being able to correctly represent an author's text so long as you know what code page they had used there were still problems.  You could not include characters from different code pages in the same document, for certain alphabets 256 characters are not enough.
 
 
 ## Unicode
@@ -48,7 +48,7 @@ Regardless of the the encoding used you always need to identify the encoding use
 </head>
 ```
 
-This tells the browser which encoding has been used for document. As soon as the browser see the Content-Type meta tag it stops parsing the document and starts again using the specified encoding so this should be the first entry in the head section.  The http server should not be responsible for specifying the encoding in the http headers as it is a property of the document and different documents served by the same server may have been written using different encodings.
+This tells the browser which encoding has been used for the document. As soon as the browser see the Content-Type meta tag it stops parsing the document and starts again using the specified encoding so this should be the first entry in the head section.  The http server should not be responsible for specifying the encoding in the http headers as it is a property of the document and different documents served by the same server may have been written using different encodings.
 
 
 ### Byte Order Marks (BOM)
