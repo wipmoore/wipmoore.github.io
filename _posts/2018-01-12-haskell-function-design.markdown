@@ -14,23 +14,23 @@ In chapter 6 of 'Programming in Haskell' there is a five step process for functi
 5. Simplify and generalise
 
 
-## Define the type
+#### Define the type
 
 Thinking about types is very helpfull it provides an understanding of the shape of our function and provides the information needed to think about the next step.
 
-## Enumerate the cases
+#### Enumerate the cases
 
 For most types of argument there are a number of standard cases to consider. e.g. List have the empty and non-empty case.  This step is about identifying for the combination of arguments what cases need to be considered.
 
-## Define the simple cases
+#### Define the simple cases
 
 From the cases identified in the previous step implemente the simple cases first.
 
-## Define the other cases
+#### Define the other cases
 
 Implement the remaining cases.
 
-## Simplify and generalise
+#### Simplify and generalise
 
 Once a function has been defined it often becomes clear that it can be generalised and simplified.
 
