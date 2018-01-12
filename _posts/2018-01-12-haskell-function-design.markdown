@@ -34,6 +34,6 @@ Implement the remaining cases.
 
 Once a function has been defined it often becomes clear that it can be generalised and simplified.
 
-## Appendix
+## References
 
 * [Programming in Haskell](http://www.foyles.co.uk/witem/computing-it/programming-in-haskell,graham-hutton-9781316626221)
