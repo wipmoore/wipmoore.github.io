@@ -26,7 +26,7 @@ If B is a subset of A and any other subset of A is disjoint from B ( A âˆ© B = â
 
 ### Restriction
 
-If B is a subset of A and instance of B are thoes that satisfy a certain constraint.  The constraint should be expressed as part of the invariant of B and not A.  Any feature added to B should be a logical consequence of the Added constraint.  Both A and B should be either deferred or effective.
+If B is a subset of A and instances of B are thoes that satisfy a certain constraint.  The constraint should be expressed as part of the invariant of B and not A.  Any feature added to B should be a logical consequence of the added constraint.  Both A and B should be either deferred or effective.
 
 ### Extension
 
@@ -51,7 +51,7 @@ If B is a subset of A where A represents some kind of data structure and B repre
 
 ### Structure
 
-If A represents a general structural property such as comparable and B represents a certain type of object the posses that property.  A will be deffered and B mayt be deffered or effective.
+If A represents a general structural property such as being comparable and B represents a certain type of object the posses that property.  A will be deffered and B may be deffered or effective.
 
 ### Implementation
 
