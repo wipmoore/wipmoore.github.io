@@ -20,7 +20,6 @@ categories: maths
 
 A graph is a set of _vertices_ and a set of _edges_ that connect vertices. An edge either connects one vertex to another or a vertex to itself.  When an edge connects a vertex to itself it is knowns as a _loop_.  If two edges connect the same set of vertices they are said to be parallel. A vertex is _isolated_ if there are no edges that connect it to another vertex.
 
-
 ### Graph
 
 A graph **G** consists of two finite sets:
@@ -29,7 +28,6 @@ A graph **G** consists of two finite sets:
 * **E(G)** a set of edges where each edge is associated with a _set_ consisting of either one or two vertices, which are known as its endpoints.
 
 An edge with just one endpoint is called a loop. Two or more edges with the same endpoints are said to be _parallel_.  An edge connects endpoints; connected endpoints are said to be _adjacent_, a vertex that is an endpoint in a loop is said to be adjacent to itself.  An edge is an incident on its endpoints and two endpoints that are incidents on the same endpoints are said to be _adjacent_.  A vertex that is not an endpoint or is only an endpoint in a loop is said to be _isolated_.
-
 
 ### Directed graph (digraph)
 
@@ -40,16 +38,13 @@ A directed graph or digraph consists of two finite sets:
 
 If an edge e is associated with a pair of vertices (v,w) then e is said to be the directed edge from v to w.
 
-
 ### Simple graph
 
 A simple graph is a graph that does not contain any loops or parallel edges.
 
-
 ### Complete graph
 
 A complete graph on n vertices, denoted Kn, is a simple graph with n vertices and exactly one edge connecting each pair of distinct vertices where n is a positive integer ( n > 0 ).
-
 
 ### Complete bipartite graph
 
@@ -65,13 +60,11 @@ For all i,k = 1,2,..,m and j,l = 1,2,..,n
 2. There is no edge from any vertex vi to any other vertex vk.
 3. There is no edge from any vertex vj to any other vertex vl.
 
-
 ### Subgraph
 
 A graph H is said to be a subgraph of G if and only if every vertex in H is also in G and every edge that is in H has the same endpoints as it has in G.
 
 Basically H is a subset of the vertices and edges in G. It does not mean that all the edges from G that would be applicable in H are in H just that any edge in H is also in G.
-
 
 ### Degrees
 
@@ -130,7 +123,6 @@ H is connected.
 No connected subgraph of G has H as a subgraph and contains vertices or edges that are not in H.
 
 i.e the subgraph is the largest it could possibly be.
-
 
 ## Euler Circuits
 
