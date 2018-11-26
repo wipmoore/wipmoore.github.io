@@ -7,7 +7,7 @@ categories: jekyll update
 
 ## Ubiquitous Language
 
-- Containers, are units of execution like a docker container, azure web apps but could just as easily be a process.
+- Containers, are units of execution like a docker container, azure web apps, or a process.
 - Components, are the artefacts that a container is made of.  There needs to be a close relationship between the models that are produced and the artefacts of the language that the containers are written in.
 
 E.g. 
@@ -18,7 +18,7 @@ In C# you have the following artefacts:
 - assemblies
 - namespaces
 
-So the component within a system built in C# should be created from these.
+So the abstractions presented in a component model of a system built using C# should be of from them.
 
 ## Models 
 
