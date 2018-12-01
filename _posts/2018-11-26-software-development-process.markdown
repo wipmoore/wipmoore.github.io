@@ -53,6 +53,7 @@ An overview of a development process
             - All test should be green.
             - It should be manually demonstrated to the stakeholders.
 
+## Notes
 
 - N. Demonstration point are a unit of release.
 - N. The reason for the mix of Front office,Back office and infrastructure work is to ensure that the product can continue to be built in a sustainable way.  If you ignore any one of these aspects you are unlikely to be able to continue to build at stable rate. Infrastructure covers a multitude of aspects such as pipelines and tooling through to system architecture.
