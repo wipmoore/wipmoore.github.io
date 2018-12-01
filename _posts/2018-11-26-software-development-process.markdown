@@ -54,9 +54,9 @@ An overview of a development process
             - It should be manually demonstrated to the stakeholders.
 
 
-N. Demonstration point are a unit of release.
-N. The reason for the mix of Front office,Back office and infrastructure work is to ensure that the product can continue to be built in a sustainable way.  If you ignore any one of these aspects you are unlikely to be able to continue to build at stable rate. Infrastructure covers a multitude of aspects such as pipelines and tooling through to system architecture.
-N. Performance test should cover:
+- N. Demonstration point are a unit of release.
+- N. The reason for the mix of Front office,Back office and infrastructure work is to ensure that the product can continue to be built in a sustainable way.  If you ignore any one of these aspects you are unlikely to be able to continue to build at stable rate. Infrastructure covers a multitude of aspects such as pipelines and tooling through to system architecture.
+- N. Performance test should cover:
     - Volume, large dataset already in the system and submitted to the system via requests
     - Load, Building from the volume this is high numbers of requests for a sustained periods.
     - Stress, Higher than planned for requests across the entire system.
