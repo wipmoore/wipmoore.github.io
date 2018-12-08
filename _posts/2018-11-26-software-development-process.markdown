@@ -16,7 +16,7 @@ An overview of a development process
         - Aim is to understand what needs to be built.
         - Data/Stories from the user needs analysis.
         - Design sprint for understanding how to present the journey.
-        - Event storming with User's and domain experts for domain rules.
+        - Event storming with users and domain experts for domain rules.
     - Define initial features:
         - Each feature will contain:
             - A description of what a is wanted why it is wanted, and who wants it. 
