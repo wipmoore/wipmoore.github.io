@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "RESTful API desing notes"
+title:  "RESTful API design notes"
 date:   2016-09-24 11:57:21 +0100
 categories: jekyll update
 ---
