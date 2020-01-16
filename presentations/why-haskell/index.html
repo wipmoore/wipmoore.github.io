@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Why Haskell</title>
+
+		<meta name="description" content="Overview of why I am learning Haskell">
+		<meta name="author" content="Paul Mooore">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+
+
+                    <section>
+                        <h1>Why Haskell</h1>
+                    </section>
+
+					<section>
+                        <h2>Context</h2>
+                        <ul>
+                            <li class="fragment">Opinion</li>
+                            <li class="fragment">Anecdotal ( Observations taken from my experiences )
+                            <ul class="fragment">
+                                <li>Process automation</li>
+                                <li>Business Information Systems</li>
+                                <li>A project where time travel was important</li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Starting point</h2>
+                        <ul>
+                            <li class="fragment">I think the way we build software is deeply flawed:</li>
+                            <ul>
+                                <li class="fragment">It is highly inefficient ( Understanding, Model, Managment, Culture )</li>
+                                <li class="fragment">It deeply flawed, rarely meeting basic customer or user needs</li>
+                            </ul>
+                            <li class="fragment">On the brightside I think we have tools to drastically improve</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>What I think is important</h2>
+                        <ul>
+                            <li class="fragment">A lot of things</li>
+                            <li class="fragment">The way we model a problem is one:
+                            <ul>
+                                <li class="fragment">A conceptual approach to modeling problems.</li>
+                                <li class="fragment">That conceptual approach is simple to apply.</li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>How does this relate to Haskell</h2>
+                        <ul>
+                            <li class="fragment">It not so much haskell as functional.</li>
+                            <li class="fragment"> try to model as pools of data with constrained flows between them.</li>
+                            <li class="fragment">I think there is significant but untapped utility in persistent data.</li>
+                            <li class="fragment">This is close to a statically types functional programming model.</li>
+                        </ul>
+                    </section>
+                    <!--
+
+
+
+
+                        Functional programming:
+                          - Pure,
+                            - What you get out is derived from what you put in.
+                            - No side effects.
+                            - The do not mutate state.
+                          - Functions transform or answer questions.
+                          - Models are build via composition
+                          - Use of common data structure is popular.
+
+                        Benefits of functional programming:
+                          - It provides reasonabilty
+                          - You read the code, you know what it does.
+                          - To recreate you just pass in the same state.
+
+                        Drawback of functional programming:
+                          - It is useless
+                          - You can not affect the real world ( No IO )
+                          - Haskell Originaly did not support IO
+
+                        Challenges in haskell resolution:
+                          - IO
+                            - Functors, Applicative, Monads ( IO guaranty order  )
+                            - You lose the beauty of composition if not carefull
+                          - It is easy to create an illegible mess, it feels like it is encouraged.
+                          - Common data sturcture do not work out of the box.
+
+                        Statically Types:
+                          - This is not a functional property ( Clojure, LISP )
+                          - A type is a just a constraint on what values are acceptable.
+                          - They are checked at compile time.
+                          - They are throw away at run time.
+
+                        Benefits/Drawbacks:
+                          - You have to do more upfront thinkning
+                          - Serialising/Deserialising
+                            - has an elegant solution
+                            - takes time to understan and appreciate
+                          - You catch errors early
+                          - Prototyping can be difficult.
+
+                    -->
+
+					<section>
+                    </section>
+
+					<section>
+                    </section>
+
+
+					<section>
+                    </section>
+
+					<section>
+                    </section>
+
+					<section>
+                    </section>
+
+					<section>
+                    </section>
+
+					<section>
+					</section>
+
+					<section>
+					</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

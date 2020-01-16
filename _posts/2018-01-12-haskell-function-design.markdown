@@ -36,4 +36,8 @@ Once a function has been defined it often becomes clear that it can be generalis
 
 ## References
 
-* [Programming in Haskell](http://www.foyles.co.uk/witem/computing-it/programming-in-haskell,graham-hutton-9781316626221)
+- [Programming in Haskell](http://www.foyles.co.uk/witem/computing-it/programming-in-haskell,graham-hutton-9781316626221)
+
+## Presentations
+
+* [Why Haskell](/presentations/why-haskell)
