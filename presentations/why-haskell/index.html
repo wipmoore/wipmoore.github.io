@@ -89,7 +89,7 @@
                     <li class="fragment">It not so much haskell as functional.</li>
                     <li class="fragment"> try to model as pools of data with constrained flows between them.</li>
                     <li class="fragment">I think there is significant but untapped utility in persistent data.</li>
-                    <li class="fragment">This is close to a statically types functional programming model.</li>
+                    <li class="fragment">This is close to a statically typed functional programming model.</li>
                 </ul>
             </section>
 
@@ -115,6 +115,7 @@
                     <li class="fragment">It provides reasonabilty.</li>
                     <li class="fragment">You read the code, you know what it does.</li>
                     <li class="fragment">To recreate you just pass in the same state.</li>
+                    <li class="fragment">High reuse straight out of the box.</li>
                 </ul>
             </section>
 
@@ -123,23 +124,21 @@
                 <ul>
                     <li class="fragment">It is useless.</li>
                     <li class="fragment">You can not affect the real world ( No IO ).</li>
+                    <li class="fragment">Haskell Originaly did not support IO.</li>
                 </ul>
-                <li class="fragment">It is useless.</li>
-                <li class="fragment">You can not affect the real world ( No IO ).</li>
-                <li class="fragment">Haskell Originaly did not support IO.</li>
             </section>
 
             <section>
-                <h2>Challenges in haskell resolution</h2>
+                <h2>Challenges in haskell</h2>
                 <ul>
-                    <li>IO:
+                    <li class="fragment">IO:
                         <ul>
-                            <li>Functors, Applicative, Monads ( IO guaranty order ).</li>
-                            <li>You lose the beauty of composition if not carefull.</li>
+                            <li class="fragment">Functors, Applicative, Monads ( IO guaranty order ).</li>
+                            <li class="fragment">You lose the beauty of composition if not carefull.</li>
                         </ul>
                     </li>
-                    <li>It is easy to create an illegible mess, it feels like it is encouraged.</li>
-                    <li>Common data sturcture do not work out of the box.</li>
+                    <li class="fragment">It is easy to create an illegible mess, it feels like it is encouraged.</li>
+                    <li class="fragment">Common data sturctures do not work out of the box.</li>
                 </ul>
             </section>
 
@@ -157,15 +156,15 @@
             <section>
                 <h2>Benefits/Drawbacks</h2>
                 <ul>
-                    <li>You have to do more upfront thinking.</li>
-                    <li>Serialising/Deserialising:
+                    <li class="fragment">You have to do more upfront thinking.</li>
+                    <li class="fragment">Serialising/Deserialising:
                         <ul>
-                            <li>has an elegant solution.</li>
-                            <li>takes time to understand and appreciate.</li>
+                            <li class="fragment">has an elegant solution.</li>
+                            <li class="fragment">takes time to understand and appreciate.</li>
                         </ul>
                     </li>
-                    <li>You catch errors early.</li>
-                    <li>Prototyping can be difficult.</li>
+                    <li class="fragment">You catch errors early.</li>
+                    <li class="fragment">Prototyping can be difficult.</li>
                 </ul>
             </section>
         </div>
