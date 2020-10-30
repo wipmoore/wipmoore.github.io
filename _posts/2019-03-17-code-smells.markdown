@@ -39,12 +39,12 @@ categories:
 ### Large class
 
 
-Classes with a large number of instance variables is generally an indication that it has more than one responsibility.  The maintenance issue is in the risk that you couple the two responsibilities together and then when you need to change one of the responsibilities you inadvertently change the coupled responsibility or at the very least it involves a more effort than it should as you need to check carefully that you have not changed the behaviour of the coupled responsibility.  This is fixed by identifying the different responsibilities and separating them out into their own class. 
+Classes with a large number of instance variables is generally an indication that it has more than one responsibility.  The maintenance issue is in the risk that you couple the two responsibilities together and then when you need to change one of the responsibilities you inadvertently change the coupled responsibility or at the very least it involves a more effort than it should as you need to check carefully that you have not changed the behaviour of the coupled responsibility.  This is fixed by identifying the different responsibilities and separating them out into their own class.
 
 
 ### Long method
 
-Long methods often contain repeated code that is implementing a specific behaviour, this is a maintenance issues as you if you need to change the behaviour you have to make a change in multiple places increasing the risk that you will either miss one or introduce different behaviour in different instances of the code.  This is fixed by breaking the long method into a series of smaller ones, this will force you to identify and remove duplication.  This should also result in code where the intent is easier to read if good names have been selected as you are not having to construct the intention from how you implemented it. 
+Long methods often contain repeated code that is implementing a specific behaviour, this is a maintenance issues as you if you need to change the behaviour you have to make a change in multiple places increasing the risk that you will either miss one or introduce different behaviour in different instances of the code.  This is fixed by breaking the long method into a series of smaller ones, this will force you to identify and remove duplication.  This should also result in code where the intent is easier to read if good names have been selected as you are not having to construct the intention from how you implemented it.
 
 
 ### Long parameter list
@@ -87,7 +87,7 @@ This is when an object has a field that is only partially needed the rest of the
 
 ### Divergent Change
 
-This is where a class is commonly changed in different ways for different reasons.  The maintenance issue is in the risk that you couple the two responsibilities together and then when you need to change one of the responsibilities you inadvertently change the coupled responsibility or at the very least it involves a more effort than it should as you need to check carefully that you have not changed the behaviour of the coupled responsibility.  This is fixed by identifying the different responsibilities and separating them out into their own class. 
+This is where a class is commonly changed in different ways for different reasons.  The maintenance issue is in the risk that you couple the two responsibilities together and then when you need to change one of the responsibilities you inadvertently change the coupled responsibility or at the very least it involves a more effort than it should as you need to check carefully that you have not changed the behaviour of the coupled responsibility.  This is fixed by identifying the different responsibilities and separating them out into their own class.
 
 
 ### Shotgun Surgery
@@ -105,7 +105,7 @@ Classes that have fields and nothing else this breaks the encapsulation where an
 
 ### Duplicate code
 
-Generally this is where you have the same behaviour implemented multiple times usually on different data.  This is a maintenance burden as if you want to change some behaviour you have to modify it in multiple places, it also increases the risk that if you need to make a change to the behaviour you miss one of the implementation resulting in the system being left in an inconsistent state.  This is solved by moving the duplicate logic into a method. 
+Generally this is where you have the same behaviour implemented multiple times usually on different data.  This is a maintenance burden as if you want to change some behaviour you have to modify it in multiple places, it also increases the risk that if you need to make a change to the behaviour you miss one of the implementation resulting in the system being left in an inconsistent state.  This is solved by moving the duplicate logic into a method.
 
 
 ### Lazy class
@@ -125,9 +125,9 @@ This is code that was added based on speculation that the functionality may be n
 When a method makes to many calls to other objects to obtain data or functionality.  This is bad because in oo data and the behaviour that act on it belong together so this implies that two objects are strongly coupled and not cohesive.  As there is a strong evidence that the two classes support the same responsibility the logic for that responsibility should be consolidated into a single class.
 
 
-### Inappropriate intimacy 
+### Inappropriate intimacy
 
-Using private methods of another class. Internal implementation details of a class are exactly that internal and should not be known by any other class, this is essentially information hiding ( A fundamental of object orientation ) which limits the impact of changing how an object achieves its goal.  External classes should only use the public interface of a class. 
+Using private methods of another class. Internal implementation details of a class are exactly that internal and should not be known by any other class, this is essentially information hiding ( A fundamental of object orientation ) which limits the impact of changing how an object achieves its goal.  External classes should only use the public interface of a class.
 
 
 ### Message Chains
@@ -144,4 +144,4 @@ When all an object does is pass messages on to another object it provides very l
 
 - [Smells to refactoring](https://www.industriallogic.com/wp-content/uploads/2005/09/smellstorefactorings.pdf)
 - [refactoring guru](https://refactoring.guru/)
-
+- [Coding in good taste](/presentations/coding-in-good-taste)
