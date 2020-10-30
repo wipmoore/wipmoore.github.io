@@ -1,205 +1,384 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>Coding in Good Taste</title>
+	<head>
+		<meta charset="utf-8">
 
-    <meta name="description" content="Good basic ideas that I come across and try to applied while programming..">
-    <meta name="author" content="Paul Mooore">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/css/reveal/reveal.min.css">
-    <link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="/lib/reveal/css/zenburn.css">
+		<title>Coding In Good Taste.</title>
 
+		<meta name="description" content="Presentation on coding techniques.">
+		<meta name="author" content="Paul Mooore">
 
-    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-    <script>
-        if (window.location.search.match(/print-pdf/gi)) {
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-            var link = document.createElement('link');
+		<link rel="stylesheet" href="/css/reveal/reveal.min.css">
+		<link rel="stylesheet" href="/css/reveal/theme/default.css" id="theme">
 
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = '/css/reveal/print/pdf.css';
-            document.getElementsByTagName('head')[0].appendChild(link);
-        }
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/lib/reveal/css/zenburn.css">
 
-    </script>
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '/css/reveal/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
 
-    <!--[if lt IE 9]>
-            <script src="/lib/reveal/js/html5shiv.js"></script>
-    <![endif]-->
+		<!--[if lt IE 9]>
+		<script src="/lib/reveal/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
 
-</head>
-<body>
+	<body>
 
-    <div class="reveal">
+		<div class="reveal">
 
-        <section>
-            <h1>Coding in Good Taste</h1>
-            <ul>
-                <li class='fragment'>Discalaimer - This is not original content.</li>
-                <li class='fragment'>Discalaimer - I frequently fail to live up to the standards I strive for.</li>
-            </ul>
-        </section>
+			<div class="slides">
 
-        <section>
-            <h3>Readability</h3>
-            <ul>
-                <li class='fragment'>Practice aimed at reducing complexity for the reader.</li>
-                <li class='fragment'>Practices that you can apply as you are coding.</li>
-            </ul>
-        </section>
+				<section>
+					<h1>Coding in Good Taste</h1>
+				</section>
 
-        <section>
-            <h3>Why is it important</h3>
-            <ul>
-                <li class='fragment'>Significantly aids maintenance.</li>
-                <li class='fragment'>If you can not understand it you can not safely change it.</li>
-                <li class='fragment'>Move fast and break thing has broken society.</li>
-            </ul>
-        </section>
+				<section>
+					<section>
+						<h3>Simple is not the same as easy</h3>
+					</section>
 
-        <section>
-            <h3>Why is it important</h3>
-            <ul>
-                <li class='fragment'>Significantly aids maintenance.</li>
-                <li class='fragment'>If you can not understand it you can not safely change it.</li>
-                <li class='fragment'>Move fast and break thing has broken society.</li>
-            </ul>
-        </section>
+					<section>
+						<ul>
+							<li>
+								Simplicity is a measure of the ability to change a system over time.
+							</li>
+							<li class="fragment">
+								Ease is a measurea of energy required to achieve a task.
+							</li>
+						</ul>
+					</section>
+				</section>
 
-        <section>
-            <h3>Appeal to authority</h3>
-            <ul>
-                <li>Linus Torvalds ( Linux, Git ).</li>
-                <li>Theo de Raadt ( Open BSD ).</li>
-                <li>Martin Thompson ( Betfair/LMAX ).</li>
-            </ul>
-        </section>
+				<section>
+					<section>
+						<h3>Simple and Complex</h3>
+					</section>
+					<section>
+						<ul>
+							<li>Simple means one fold.</li>
+							<li class='fragment'>Complex means many folds.</li>
+							<li class='fragment'>They are opposites.</li>
+						</ul>
+					</section>
 
-        <section>
-            <h3>What the talk is not about</h3>
-            <ul>
-                <li>SOLID, Coupling/Cohesion, Hexagonal architecture, Code formatting.</li>
-                <li>Tools or Organisation independent approaches.</li>
-            </ul>
-        </section>
+					<section>
+						<h3>What is complexity?</h3>
+					</section>
 
-        <section>
-            <h3>Underpinnings</h3>
-            <ul>
-                <li class='fragment'>Chunking theory.</li>
-                <li class='fragment'>Short term memory has seven slots.</li>
-            </ul>
-        </section>
+					<section>
+						<p>
+							Complexity is seen in the sense of how you create a complex pattern or structure by braiding (plaiting) or weaving.
+						</p>
+					</section>
 
-        <section>
-            <h3>Techniques</h3>
-            <ul>
-                <li class='fragment'>Single level of abstraction principle.</li>
-                <li class='fragment'>Cyclomatic complexity.</li>
-                <li class='fragment'>Remain true to the model.</li>
-            </ul>
-        </section>
+					<section>
+						<ul>
+							<li>
+								Braiding interlocks strands (components/concerns) together.
+							</li>
+							<li class='fragment'>
+								Interlocking forms tight bonds between the strands.
+							</li>
+						</p>
+					</section>
 
-        <section>
-            <h3>Cyclomatic complexity</h3>
-            <ul>
-                <li class='fragment'>Is a measure of how complex a method is.</li>
-                <li class='fragment'>Start at one.</li>
-                <li class='fragment'>Add one to the cost for every branch ( selection, iteration, etc ).</li>
-                <li class='fragment'>Add one to the cost for every conditional operation ( &&, !! ).</li>
-                <li class='fragment'>If you get past five it is too complex.</li>
-                <li class='fragment'>Do this manually as you write/modify a method.</li>
-            </ul>
-        </section>
+					<section>
 
-        <section>
-            <h3>Single level of abstraction principle.</h3>
-            <ul>
-                <li class='fragment'>Code in a mehtod should all be at the same level of abstraction.</li>
-                <li class='fragment'>Domains or Environment.</li>
-                <li class='fragment'>Worker or Manager.</li>
-                <li class='fragment'>Functional or Imperative.</li>
-            </ul>
-        </section>
+						<ul>
+							<li>
+								Tight bonding between components/concerns is the problem.
+							</li>
+							<li class='fragment'>
+								It causes them to become indistinguishable from each other.
+							</li>
+						</ul>
+						<p>
 
-        <section>
-            <h3>Remain true to the model</h3>
-            <ul>
-                <li class='fragment'>All code should be written to some mental mode.</li>
-                <li class='fragment'>Affords the consistency.</li>
-                <li class='fragment'>Can be documented so that new developer can maintain that consistency.</li>
-            </ul>
-        </section>
-    </div>
+						</p>
+					</section>
 
+					<section>
+						<h3>What are the implication of complexity?</h3>
+					</section>
 
+					<section>
+						<ul>
+							<li>
+								We can not comprehend in isolation.
+							</li>
+							<li class='fragment'>
+								You have to understand it as a whole.
+							</li>
+						</ul>
+					</section>
 
-    <script src="/lib/reveal/js/head.min.js"></script>
+					<section>
+						<h3>What does this mean for us?</h3>
+					</section>
 
-    <script src="/js/reveal/reveal.min.js"></script>
+					<section>
+						<ul>
+							<li>
+								Our capacity to comprehend complexity is finite and quite limited.
+							</li>
+							<li class='fragment'>
+								Statistically we do not vary that much.
+							</li>
+						</ul>
+					</section>
 
+					<section>
+						<h3>Why does this matter?</h3>
+					</section>
 
+					<section>
+						<ul>
+							<li>
+								We have to be able to analyse a system to change it.
+							</li>
+							<li class='fragment'>
+								Type checking and automated test are not enough.
+							</li>
+							<li class='fragment'>
+								Ignoring complexity is not an option.
+							</li>
+						</ul>
+					</section>
 
-    <script>
+					<section>
+						<h3>Types of complexity</h3>
+					</section>
 
+					<section>
+						<ul>
+							<li>
+								<strong>Essential complexity</strong>, complexity that is part of the problem you are solving.
+							</li>
+							<li class='fragment'>
+								<strong>Accidental complexity</strong>, complexity introduced via the tools and constructs we use.
+							</li>
+						</ul>
+					</section>
 
+					<section>
+						<p>
+							The aim is to <strong>minimize</strong> accidental complexity.
+						</p>
+					</section>
 
-        // Full list of configuration options available here:
+					<section>
+						<h3>How do we introduce complexity?</h3>
+					</section>
 
-        // https://github.com/hakimel/reveal.js#configuration
+					<section>
+						<p><strong>Braiding</strong><p>
+						<ul>
+							<li class='fragment'>
+								Multiple concerns in a single component.
+							</li>
+							<li class='fragment'>
+							  Tightly bonding concerns.
+						 	</li>
+						</ul>
+					</section>
 
-        Reveal.initialize({
+					<section>
+						<p><strong>Complex constructs</strong><p>
 
-            controls: true,
+						<ul>
+							<li class='fragment'>
+								<strong>State</strong>, conflates value and time.
+							</li>
 
-            progress: true,
+							<li class='fragment'>
+								<strong>Objects</strong>, conflates idenity and value.
+							</li>
 
-            history: true,
+							<li class='fragment'>
+								<strong>Syntax</strong>, conflates meaning and order.
+							</li>
 
-            center: true,
+							<li class='fragment'>
+								<strong>Inheritance</strong>, conflates types.
+							</li>
 
+							<li class='fragment'>
+								<strong>Variables</strong>, conflates value and time.
+							</li>
 
+							<li class='fragment'>
+								<strong>Actors</strong>, conflates what and who.
+							</li>
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+							<li class='fragment'>
+								<strong>ORM</strong>, Oh my giddy aunt.
+							</li>
 
-            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+							<li class='fragment'>
+								<strong>Conditionals</strong> conflate rules and program organisation.
+							</li>
+						</ul>
+					</section>
 
+					<section>
+						<h3>How do we make things simple?</h3>
+					</section>
 
+					<section>
+						<p><strong>Chose simple constructs.</strong></p>
 
-            // Parallax scrolling
+ 						<p class='fragment'>
+							They allow you to focus on what the software is supposed to do rather than how to do it.
+						</p>
+					</section>
 
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+					<section>
 
-            // parallaxBackgroundSize: '2100px 900px',
+						<p><strong>Examples of simple constructs:</strong></p>
+						<ul>
+							<li class='fragment'>Values.</li>
+							<li class='fragment'>Persistent collection.</li>
+							<li class='fragment'>Standard data strcutures.</li>
+							<li class='fragment'>Pure functions.</li>
+							<li class='fragment'>Declarative data manipulation.</li>
+							<li class='fragment'>Consistency ( transactions and values )</li>
+						</ul>
+					</section>
 
+					<section>
+						<p><strong>Abstraction:</strong> ( write simple stuff )</p>
 
+						<ul>
+							<li class='fragment'>
+								Abstraction means to draw things away, to draw away from the physical nature of something.
+							</li>
+							<li class='fragment'>
+								It is not hiding stuff.
+							</li>
+						</ul>
+					</section>
 
-            // Optional libraries used to extend on reveal.js
+				</section>
 
-            dependencies: [
+				<section>
 
-                { src: '/lib/reveal/js/classList.js', condition: function () { return !document.body.classList; } },
+					<section>
+						<h3>Easy and Hard</h3>
+					</section>
 
-                { src: '/plugin/reveal/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					<section>
+						<p>
+							The property being measured is the amount of effort or time that is needs to complete a task.
+						</p>
+					</section>
 
-                { src: '/plugin/reveal/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					<section>
+						<ul>
+							<li>
+								Ease is subjective.
+							</li>
+							<li class='fragment'>
+								What is easy for one person may be hard for another and vice versa.
+							</li>
+						</ul>
+					</section>
 
-                { src: '/plugin/reveal/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+					<section>
+							<h3>What makes things hard?</h3>
+					</section>
 
-                { src: '/plugin/reveal/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+					<section>
+						<ul>
+							<li>Things not being near at hand.</li>
+							<li class='fragment'>Lack of familiarity.</li>
+							<li class='fragment'>Things beyond our capabilities.</li>
+						</ul>
+					</section>
 
-                { src: '/plugin/reveal/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+					<section>
+						<h3>How do we make things easy.</h3>
+					</section>
 
-            ]
+					<section>
+						<ul>
+							<li>Make things close to hand.</li>
+							<li class='fragment'>Learn</li>
+							<li class='fragment'>Bring the problem within our capabilities.
+							</li>
+						</ul>
+					</section>
+				</section>
 
-        });
+				<section>
+					<section>
+						<h3>Conclusion</h3>
+					</section>
 
-    </script>
-</body>
+					<section>
+						<ul>
+							<li>
+								Simplicity and Ease are not the same concept.
+							</li>
+							<li class='fragment'>
+								Simplicity is about efficiency (Reduction of Waste).
+							</li>
+							<li class='fragment'>
+								Ease is about productivity (Quickly getting stuff done).
+							</li>
+							<li class='fragment'>
+								They are both necessary conditions for efficiency.
+							</li>
+						</ul>
+					</section>
 
+				</section>
+			</div>
+
+		</div>
+
+		<script src="/lib/reveal/js/head.min.js"></script>
+		<script src="/js/reveal/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/lib/reveal/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/plugin/reveal/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/reveal/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/plugin/reveal/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/plugin/reveal/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/plugin/reveal/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
 </html>
