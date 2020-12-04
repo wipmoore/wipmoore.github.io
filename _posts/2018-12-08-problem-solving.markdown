@@ -19,13 +19,13 @@ There are three models:
 
 The aim is to align the _user model_ and the _design model_. A user's model is formed via the system model and preconceived ideas about how the system should function so it is important that the system image convey a clear picture of the design model and that the design model is simple to conceptualize.
 
-## Making things simple to Conceptualize 
+## Making things simple to Conceptualize
 
-- __Simplify the structure of the task__, minimize the amount of planning or problem solving required. 
+- __Simplify the structure of the task__, minimize the amount of planning or problem solving required.
 - __Make things visible__,:
     - Allow people to know what is possible.
     - Allow people to understand what the effect of an action will be.
-- __Get the mappings right__, so that users can determine: 
+- __Get the mappings right__, so that users can determine:
     - between intention and possible action.
     - action and their effect on the system.
     - actual state and perceived by sight state.
@@ -54,3 +54,9 @@ The aim is to align the _user model_ and the _design model_. A user's model is f
 ## Notes
 
 - For this to be useful it is kind of important that you have a good understanding of what is simple in regard to human cognition.
+
+## Appendices
+
+* [Systems Presentation](/presentations/programming-and-philosophy)
+
+
