@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Asp.Net Core - The Anatomy of A Request</title>
+		<title>Asp.Net Core requests</title>
 
 		<meta name="description" content="Presentation on coding techniques.">
 		<meta name="author" content="Paul Mooore">
@@ -40,7 +40,120 @@
 			<div class="slides">
 
 				<section>
-					<h1>Asp.Net Core - The Anatomy of a Request</h1>
+					<h1>Asp.Net core requests</h1>
+				</section>
+
+				<section>
+					<h3>What are we doing</h3>
+				</section>
+
+				<section>
+					<pre><code data-trim data-noescape>
+GET /hello.htm HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Host: www.tutorialspoint.com
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code>
+HTTP/1.1 200 OK
+Date: Thu, 10 Jun 2021 05:59:09 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+Server: gws
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Accept-Ranges: none
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+Hello World
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>There are two aspects to this</h3>
+					<ul>
+						<li class='fragment'>What processing should be preformed on each request type?</li>
+						<li class='fragment'>How are requests accepted into the system?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Processing is handled by</h3>
+					<ul>
+						<li class='fragment'>By defining a Pipeline which is composed of</li>
+						<li class='fragment'>Middleware</li>
+						<li class='fragment'>Controllers</li>
+						<li class='fragment'>Filters</li>
+						<li class='fragment'>Actions</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The Pipeline</h3>
+					<ul>
+						<li class='fragment'>Built using IApplicationBuilder</li>
+						<li class='fragment'>Defined by us in Startup.cs</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Middleware</h3>
+					<ul>
+						<li class='fragment'>Occurs for all requests</li>
+						<li class='fragment'>You have access to the requests http context containing the header and footer</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre><code>
+app.Use( async (context, next) => {
+	await context.Response.WriteAsync("M1.1");
+	await next.Invoke();
+	await context.Response.WriteAsync("M1.2");
+});
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code>
+app.Run( async (context) => {
+	await context.Response.WriteAsync("M2.1")
+});
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Routing</h3>
+					<ul>
+						<li class='fragment'>Is middleware</li>
+						<li class='fragment'>Passes the request to the Action Invocation pipeline</li>
+						<li class='fragment'>With mvc the request is passed to a controller</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Controllers</h3>
+					<ul>
+						<li class='fragment'>Intended to perform the main request processing</li>
+						<li class='fragment'>Filters - Across many requests.</li>
+						<li class='fragment'>Actions - Perform the main request.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Hosts</h3>
+					<ul>
+						<li class='fragment'>Requests are accepted into the system via Hosts</li>
+						<li class='fragment'>Filters - Across many requests.</li>
+						<li class='fragment'>Actions - Perform the main request.</li>
+					</ul>
 				</section>
 
 			</div>

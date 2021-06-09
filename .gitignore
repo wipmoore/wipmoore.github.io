@@ -3,3 +3,4 @@ _site
 .jekyll-metadata
 .DS_Store
 .ssh
+presentations/asp-net-core/cache.html
