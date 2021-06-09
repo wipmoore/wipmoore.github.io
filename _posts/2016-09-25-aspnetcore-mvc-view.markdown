@@ -16,7 +16,7 @@ categories: jekyll update
 
 # Layouts
 
-Allow you to define a common layout for all views also used to define common scripts and css. By convention the layout is stored in a file called _\_Layout.cshtml_ in the _/Views/Shared_ folder.  
+Allow you to define a common layout for all views also used to define common scripts and css. By convention the layout is stored in a file called _\_Layout.cshtml_ in the _/Views/Shared_ folder.
 
 The layout to apply to a view can be defined via the _Layout_ property.
 
@@ -162,7 +162,7 @@ public IActionResult Index() {
 ```
 public IActionResult Index() {
   ...
-  return View( "Views/Index.cshtml" ) // Path to the view file.    
+  return View( "Views/Index.cshtml" ) // Path to the view file.
 }
 
 ```
@@ -183,3 +183,8 @@ It is accessed via @Model in a razor view.
 ### ViewData
 
 Is a Dictionary that is passed into the view from the controller.
+
+
+### Presentations
+
+* [Asp.net Core Pipeline](/presentations/asp-net-core)
