@@ -4,3 +4,4 @@ _site
 .DS_Store
 .ssh
 presentations/asp-net-core/cache.html
+notes/
