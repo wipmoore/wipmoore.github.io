@@ -5,14 +5,13 @@ date: 2021-06-16 15:00:00 +0100
 categories:
 ---
 
-- Environments
-- Pipeline
-- Authorization
-- Authentication
-- Configuration
-- Logging
-- Error handling
-- Hosts
+- [Environments](#environment)
+- [Pipeline](#pipeline)
+- [Authorization](#authorization)
+- [Authentication](#authentication)
+- [Configuration](#configuration)
+- [Logging](#logging)
+- [Hosts](#hosts)
 
 ## Environments
 
@@ -637,7 +636,6 @@ public IActionResult OnPost(int? id, int[] selectedCourses)
 
 Data formats that use subscript numbers (... [0] ... [1] ...) must ensure that they are numbered sequentially starting at zero
 
-
 #### Dictionaries
 
 For targets that are dictionaries of simple types, model binding looks for matches to parameter_name or property_name. If no match is found, it looks for one of the supported formats without the prefix.
@@ -695,8 +693,6 @@ The default webhost uses the following providers:
 
 
 ## Logging
-
-## Error handling
 
 ## Hosts
 
