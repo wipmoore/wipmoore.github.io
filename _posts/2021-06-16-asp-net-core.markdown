@@ -32,7 +32,7 @@ The following values have significance within asp.net core:
 **Note**. Production is the default if DOTNET_ENVIRONMENT or ASPNETCORE_ENVIRONMENT has not been set.
 
 
-```
+```c#
 public class Startup
 {
     private readonly IConfiguration _config;
@@ -97,7 +97,7 @@ The pipeline is defined in _Startup.cs_ and consists of the following components
 
 ### Definition
 
-Startup.cs is the startup class for the project the following are defined:
+The pipeline and services that it depends on are configured in Startup.cs.  The following are defined:
 
 - Services that can be supplied via dependency injection
 - The pipeline that will process requests
@@ -107,7 +107,7 @@ Startup.cs is the startup class for the project the following are defined:
 | ConfigureServices | to configure the dependencies                 |
 | Configure         | to configure the request processing pipeline  |
 
-```C#
+```c#
 public class Startup
 {
     IConfiguration configuration;
@@ -133,7 +133,7 @@ public class Startup
 
 The asp.net core request pipeline consists of a sequence of request delegates that are called one after the other.  Each delegate can perform an action before and after the next delegate.  The pipeline is defined using the _IApplicationBuilder_ in the _Configure_ method of the _Startup_ class.
 
-```
+```c#
 public class Startup
 {
     ...
@@ -182,7 +182,7 @@ Implements :
 
 __Note__. The container will call dispose on any services that it creates the implements IDisposable.
 
-```C#
+```c#
     public void ConfigureServices( IServiceCollection services )
     {
         services.AddScoped<IFileStorageService, AzureStorageService>();
@@ -202,11 +202,11 @@ Middleware is the heart of an asp.net application, its purpose is to allow small
 - [next :requestdelegate](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.requestdelegate?view=aspnetcore-5.0)
 
 
-```
+```c#
 public delegate Task RequestDelegate(HttpContext context);
 ```
 
-```
+```c#
 app.Use( async (context, next) => {
     IMessageFormatter formatter = context.RequestServices.GetService<IMessageFormatter>()
 
@@ -216,7 +216,7 @@ app.Use( async (context, next) => {
 });
 ```
 
-```
+```c#
 app.Run( async (context) => {
     IMessageFormatter formatter = context.RequestServices.GetService<IMessageFormatter>();
 
@@ -224,7 +224,7 @@ app.Run( async (context) => {
 });
 ```
 
-```
+```c#
 public class RequestCultureMiddleware
 {
     private readonly RequestDelegate _next;
@@ -264,7 +264,7 @@ public class Startup
 }
 ```
 
-__Note__. The order in which the middleware is added to the pipeline matters as preceding middleware is responsible for adding data to the context and deciding if to continue or terminate the pipeline and the order is the order in which it is added in the _Configure_ method.
+__Note__. The order in which the middleware is added to the pipeline matters as preceding middleware is responsible for adding data to the context and deciding if to continue or terminate the pipeline where the order is the order in which it is added in the _Configure_ method.
 
 
 ### Routing
@@ -277,7 +277,7 @@ Routing uses a pair of middleware, registered by UseRouting and UseEndpoints:
 - UseEndpoints adds endpoint execution to the middleware pipeline.
 
 
-```
+```c#
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     ...
@@ -302,7 +302,7 @@ An endpoint is something that can be:
   - MapPost
   - etc
 
-```
+```c#
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGet("/hello/{name:alpha}", async context =>
@@ -328,7 +328,7 @@ An ASP.NET Core endpoint is:
 - Selectable: Optionally, has routing information.
 - Enumerable: The collection of endpoints can be listed by retrieving the EndpointDataSource from DI.
 
-```
+```c#
 // MVC endpoint example;
 public class Startup
 {
@@ -401,6 +401,16 @@ Resource filters execute before model binding so you can handle binding for the 
 
 - [IAsyncResourceFilter](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncresourcefilter?view=aspnetcore-5.0)
 
+A resource filter context has access to the following:
+
+- Result
+- ValueProviderFactories
+- Filters
+- ActionDescriptor
+- HttpContext
+- ModelState
+- RouteData
+
 ### 3. Model binding and Validation
 
 Is the creation and population of a model or models from the request. The following are targets for model binding:
@@ -410,7 +420,7 @@ Is the creation and population of a model or models from the request. The follow
 
 __Note__ By default properties are not bound for HTTP Get request to bind on a Get request you have to specify SupportsGet on the BinProperty attribute.
 
-```
+```c#
 [BindProperty(Name = "ai_user", SupportsGet = true)]
 public string ApplicationInsightsCookie { get; set; }
 ```
@@ -442,7 +452,7 @@ Any of the following attributes can be applied to override the defaults:
 
 You can specify a name for the of the field to populate the property from in the attribute:
 
-```
+```c#
 public class MakeBookingRawRequest
 {
     public int PropertyId { get; set; }
@@ -475,7 +485,7 @@ Asp.net core runtime delegates the responsibility of reading the body to an inpu
 
 The FromQuery binding source attribute on the LastName property is ignored because the customer property of the Get action is ascribed with the FromBody binding source attribute because Input formatters only read the body and do not understand binding source attributes.
 
-```
+```c#
 public class CustomerBookingsByNameRequestRaw
 {
     public int FirstName { get; set; }
@@ -515,7 +525,7 @@ Source data for the model binding system is provided by value providers.  To cre
 - Register the factory class in Startup.ConfigureServices.
 
 To register the provider to be used after all the other providers:
-```
+```c#
 services
     .AddMvcOptions(options =>
     {
@@ -524,7 +534,7 @@ services
 ```
 
 To add the provider as the first provider to be used.
-```
+```c#
 services
     .AddMvcOptions(options =>
     {
@@ -547,7 +557,7 @@ If a binding source is found but can not be converted to the target type the mod
 
 In an API controller that has the [ApiController] attribute an invalid model start results in an authomatic HTTP 400 response.
 
-```
+```c#
 public IActionResult Post()
 {
     if (!ModelState.IsValid)
@@ -586,7 +596,7 @@ Complex types must have a public default constructor and public writable propert
 - For complex properties the prefix is the property name.
 
 e.g. The First name will be matched to a source in the request labeled customer.FirstName
-```
+```c#
 public class CustomerBookingsByNameRequestRaw
 {
     public int FirstName { get; set; }
@@ -640,7 +650,7 @@ Data formats that use subscript numbers (... [0] ... [1] ...) must ensure that t
 
 For targets that are dictionaries of simple types, model binding looks for matches to parameter_name or property_name. If no match is found, it looks for one of the supported formats without the prefix.
 
-```
+```c#
 public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
 
 // selectedCourses[1050]=Chemistry&selectedCourses[2000]=Economics
@@ -653,7 +663,7 @@ public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
 
 Model binding to record types with a single constructor is supported
 
-```
+```c#
 public record Person([Required] string Name, [Range(0, 150)] int Age, [BindNever] int Id);
 
 public class PersonController
@@ -667,7 +677,206 @@ public class PersonController
 }
 ```
 
+#### Model state
+
+Model state is derived from:
+
+- Model binding state
+- Model validation state
+
+Errors from __model binding__ are generally __data conversion errors__ where as errors from __validation__ are more likely to be __business rules__.
+
+#### Model Validation
+
+Occurs after model binding and reports errors where data does not conform to business rules. The outcome of model validation is reported in the _ModelState.IsValid_
+
+```c#
+public async Task<IActionResult> OnPostAsync( BookingDetailsRequest request )
+{
+    if (!ModelState.IsValid)
+    {
+        // rfc 7808 Problem details
+        return new ObjectResult( new ValidataionProblemDetails( ModelState )
+        {
+            Detail = "Validation Errors in Request",
+            Status = 400,
+        });
+    }
+    ...
+}
+```
+
+##### Automatic 400 response on Validation failure
+
+If the controller is ascribed with an __ApiController__ attribute if it fails model validation it will automatically respond with a 400 error and never reach the action. This can be __disabled__ by:
+
+```c#
+
+public void ConfigureServices( IServiceCollection services )
+{
+    ...
+
+    services
+        .AddControllers()
+        .ConfigureApiBehaviorOptions(options =>
+        {
+            ...
+            options.SuppressModelStateInvalidFilter = true;
+            ...
+    });
+
+}
+```
+
+#### Repeat validation
+
+If a request fails validation you can modify it and try again.
+
+```c#
+public async Task<IActionResult> Post( BookingRequestRaw request )
+{
+    if(!ModelState.IsValid)
+    {
+        request.SubmittedDate = DateTime.UtdNow;
+
+        ModelState.ClearValidationState(nameof(request)));
+        if (!TryValidateModel(request, nameof(request)))
+        {
+            return new ObjectResult( new ValidationProblemDetails( ModelState )
+            {
+                Detail = "Request failed validation",
+                Status = 400,
+            });
+        }
+    }
+    ...
+}
+```
+
+Domain specific attributes can be create:
+
+```c#
+[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+internal class ValidFromAttribute : ValidationAttribute
+{
+    DateTime minDate;
+
+    public ValidFromAttribute
+             ( DateTime minDate = default )
+    {
+        this.minDate = minDate != default ? minDate : DateTime.UtcNow.AddYears( -5 );
+    }
+
+    public override bool IsValid
+                           ( object value
+                           , ValidationContext context )
+    {
+        var request   = (BookingRequest)validationContext.ObjectInstance;
+        var from      = ((DateTime)value).Year;
+
+        return from.Year >= minDate.Year &&  from < request.To;
+    }
+
+    public override string FormatErrorMessage(string name)
+        => $"{name} is not valid, it must be on or after {minDate.Year} and before the bookings to date.";
+}
+```
+
+Model consistency validation can be applied via the __IValidatableObject__ interface:
+
+
+```c#
+public class BookingRequest : IValidatableObject
+{
+    ...
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        var request   = (BookingRequest)validationContext.ObjectInstance;
+
+        if ((request.To - request.From).TotalDays < 3)
+        {
+            yield return new ValidationResult(
+                "Invalid date range specified, must be more at least three days."
+                new[] { nameof(ReleaseDate) });
+        }
+    }
+}
+```
+
+#### Automatic short-circuit
+
+Validation is automatically short-circuited (skipped) if the model graph doesn't require validation. Objects that the runtime skips validation for include collections of primitives (such as byte[], string[], Dictionary<string, string>) and complex object graphs that don't have any validators.
+
+
+### 4. Action Filters
+
+Action filters are invoked after model binding before and after action execution so they can be used to modify the model and the result. Action filters implement the _IAsyncActionFilter_.
+
+- [IAsyncActionFilter](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncactionfilter?view=aspnetcore-5.0)
+
+An action filter context has access to the following:
+
+- Controller
+- Result
+- ActionArguments
+- Filters
+- ActionDescriptor
+- HttpContext
+- ModelState
+- RouteData
+
+_Note_ A typical use for these is adding cache control headers to the response.  As cache control is specific to each request it is a better fit to apply it at the _action invocation pipeline_ stage that in middleware which is applicable to all requests.
+
+### 5. Action Execution
+
+Action execution is where the target action method is invoked.
+
+### 6. Exception Filters
+
+Exception filters apply global policies to unhandled exceptions that occur before the response body has been written to.  These filters are invoked for unhandled exceptions in:
+
+- Controller creation
+- Model binding
+- Action filters
+- Action methods
+
+They are not invoked from unhandled exceptions in:
+
+- Authorization filters
+- Resource filters
+- Result filters
+- Result Execution
+
+[IAsyncExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncexceptionfilter?view=aspnetcore-5.0)
+
+An action filter context has access to the following:
+
+- Exception
+- Result
+- ExceptionHandled ( bool )
+- ExceptionDispatchInfo
+- Filters
+- ActionDescriptor
+- HttpContext
+- ModelState
+- RouteData
+
+Setting ExceptionHandled to true or writing a response will stop propagation of the exception.
+
+In general middleware should be used to handle exceptions with this being just for one off handling of exceptions for specific actions.
+
+### 6. Result Filters
+
+Result filters surround the execution of action results.  They are only executed when an _action_ or _actions filter produces a result_.
+
+[IAsyncResultFilter](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncresultfilter?view=aspnetcore-5.0)
+
 ## Authentication
+
+Authorization is responsible for providing the _ClaimsPrincipal_ for authorization to make permission decisions against.
+
+There are multiple authentication approaches ( _known as authentication schems_ ) and more than one can be used within an application.  Regardless of how many authentication schemes have been registered if a default scheme is not defined all authorization attributes will need to specify the scheme that they want to use an _InvalidOperationException: No authentication Scheme found. ..._ will be thrown.
 
 ## Authorization
 
