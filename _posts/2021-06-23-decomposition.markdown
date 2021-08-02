@@ -19,14 +19,17 @@ __Note__  Given what we now know from _systems theory_ and _complexity theory_ t
 
 ## Governing principles
 
-- Decomposition should be performed on the basis of information hiding.
+- Decompose based on a list of difficult design decisions or decisions which are likely to change.
 
-The interface and definition of each module should be chosen to reveal as little as possible about its inner workings.
+__Note__ The connections between modules are not just the interface that they communicate over and the data that they transfer but also the _assumptions_ which they make about each other.
 
-__Note__ If not careful this can lead to inefficiencies as it may result in elaborate calling sequences ( Chatty systems ) due to repeated switching between modules.
+__Note__ Decompostion on the basis of information hiding so that you reveal as little as possible about a modules inner workings if not careful can lead to inefficiencies as it may result in elaborate calling sequences ( Chatty systems ) due to repeated switching between modules.
 
-Decompose based on a list of difficult design decisions or decisions which are likely to change.
+## Factoring
 
-The connections between module is not just the interface that they communicate over and the data that they transfer but also the _assumptions_ which they make.
+- The separation of a function within one module into a new module of its own.
 
-You can only make changes that do not violate the assumptions that other modules have made about it.
+- It should be done for one of the following reasons:
+  - Avoid the same function being implemented in more than one module.
+  - Separate _work_ from _management_.
+  - Simplify the implementation.
