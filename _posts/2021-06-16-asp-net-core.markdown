@@ -874,9 +874,25 @@ Result filters surround the execution of action results.  They are only executed
 
 ## Authentication
 
-Authorization is responsible for providing the _ClaimsPrincipal_ for authorization to make permission decisions against.
+There are two parts to the authentication in an asp.net application:
 
-There are multiple authentication approaches ( _known as authentication schems_ ) and more than one can be used within an application.  Regardless of how many authentication schemes have been registered if a default scheme is not defined all authorization attributes will need to specify the scheme that they want to use an _InvalidOperationException: No authentication Scheme found. ..._ will be thrown.
+- Challenge
+- Authentication
+
+### Challenge
+
+Validates security credentials this is now commonly an OpenIdConnect or OAuth2 Idetity provider.
+
+## Authentication
+
+Serializes/Deserializes a verified user.  Depending on the the type of application API or client this will usually differ:
+
+- __API__ commonly use JWT presented as a Bearer token from an OpenIdConnect or OAuth2 Identity provider.
+- __Client__ commonly use Cookie to persist user information provided by the Challenge scheme.
+
+The outcome of the Challenge or Authentication subsystem is the population of the __User__ object on the __HttpContext__. This is a __ClaimsPrincipal__ that contains a record of the claims were reported for the authenticated user.
+
+
 
 ## Authorization
 
