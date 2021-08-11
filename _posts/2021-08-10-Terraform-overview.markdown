@@ -63,3 +63,12 @@ HashiCorp defines the followin Terraform workflow:
 - __Plan__ Preview changes terraform will make to match the configuration.
 - __Apply__ Make the planned changes.
 
+### Providers 
+
+Are pluggins that allow terraform to interact with cloud platforms and service via their api
+
+
+```
+
+```
+
