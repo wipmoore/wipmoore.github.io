@@ -11,7 +11,8 @@ categories:
 ## Memory safety
 
 - You decide the lifetime of each value __Rust__ will free the memory and other resources belonging to the value at a point that is under your control.
-- A program can never use a pointer to an object after it has been dropped so long as you do not use an unsafe code.
+
+- A program can never use a pointer to an object after it has been dropped so long as you do not use any unsafe code.
 
 ## Ownership
 
@@ -27,11 +28,10 @@ categories:
 ### Moving
 
 - Assign a value from one variable to another move the __ownership__ of the value.
-- Passing a value toa function or return one from a function __moves__ the ownership.
+- Passing a value to a function or return one from a function __moves__ the ownership.
 
 - __N__ This is moving ownership not necessarily moving the values position in memory.
 - __N__ Move applies to values not the heap storage a value may own.
-- __N__ The _Rust_ compiler will wall the call stack and often stores values in the correct place without the need to move data position in memory.
 
 ```Rust
 let x = vec![10, 20, 30];
@@ -72,6 +72,7 @@ let three = v[2];
 - N. It is only types that a simple bit-to-bit copy will suffice that can be copy types.
 
 - By default __structs__ are not copy types
+
 - If all fields of a struct are copy types it can be made a copy type by implemeing the _Copy_ and _Clone_ Traits.
 
 ```Rust
