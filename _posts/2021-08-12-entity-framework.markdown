@@ -5,6 +5,8 @@ date: 2021-08-12 15:00:00 +0100
 categories:
 ---
 - [DbContext](#dbcontext)
+- [Models](#models)
+- [Querying Data](#querying-data)
 
 
 ## DbContext
@@ -241,4 +243,97 @@ public class Post
     public string Content { get; set; }
 }
 ```
+## Querying Data
 
+Entity Framework used Linq for query definitions and will attempt to evaluate queries on the server as much as possible.  By default information about the loaded entities is maintained in the Contexts change tracker so that any changes that are made to an entity will be persisted to the database when SaveChanges is called.  Change tracking for a query can be be disabled.
+
+```c#
+
+var blog = context.Blogs
+	.AsNoTracking()
+	.ToList();
+
+// or
+
+context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehaviour.NoTracking;
+
+var blogs = context .Blogs.ToList();
+```
+
+
+### Loading related data
+
+There are three strategies used for this:
+
+- __Eager Loading__ where the data is loaded as part of the initial query.
+- __Explicit loading__ the related data is explicitly loaded at a later time.
+- __Lazy loading__ the related data is transparently loaded from the database when the navigation property is accessed.
+
+
+#### Eager loading
+
+The __Include__ and __ThenInclude__ methods are used to specify the data to be included in the query result.
+
+```c#
+using (var context = new BloggingContext())
+{
+    var blogs = context.Blogs
+        .Include(blog => blog.Posts)
+        .ThenInclude(post => post.Author)
+        .ThenInclude(author => author.Photo)
+        .Include(blog => blog.Owner)
+        .ThenInclude(owner => owner.Photo)
+        .ToList();
+}
+```
+
+Include statement can be filtered:
+
+```c#
+
+using (var context = new BloggingContext())
+{
+    var filteredBlogs = context.Blogs
+        .Include(
+            blog => blog.Posts
+                .Where(post => post.BlogId == 1)
+                .OrderByDescending(post => post.Title)
+                .Take(5))
+        .ToList();
+}
+
+```
+
+
+#### Explicit Loading 
+
+Where dependent entities are loaded in a separate statements:
+
+```c#
+using (var context = new BloggingContext())
+{
+    var blog = context.Blogs
+        .Single(b => b.BlogId == 1);
+
+    context.Entry(blog)
+        .Collection(b => b.Posts)
+        .Load();
+
+    context.Entry(blog)
+        .Reference(b => b.Owner)
+        .Load();
+}
+```
+
+
+#### Lazy Loading
+
+This can be done in different ways bu the most straight forward way to enable lazy loading is using the __Micorsoft.EntityFrameworkCore.Proxy__ package.
+
+```c#
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseLazyLoadingProxies()
+        .UseSqlServer(myConnectionString);
+
+```
