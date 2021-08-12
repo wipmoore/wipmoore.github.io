@@ -145,7 +145,6 @@ public class Startup
         ...
     }
 }
-
 ```
 
 #### IWebHostEnvironment
@@ -312,6 +311,7 @@ app.UseEndpoints(endpoints =>
     });
 });
 ```
+
 Route templates such as _/hello/{name:alpha}_ are used to configure how the endpoint are matched. With this example:
 
 - Any URL path that begins with /hello/ followed by a sequence of alphabetic characters is matched.
@@ -513,7 +513,6 @@ public class CustomerBookingsByNameController
 
 The __FromBody__ binding source attribute should only be applied to a single parameter of an action method as once the request stream has been read by an input formatter it is no longer available to be read again.
 
-
 After each property is successfully bound model validation occurs for that property. The record of what data is bound to the model and any binding or validation errors is stored in ControllerBase.ModelState which will update the ModelState.IsValid flag.
 
 #### Value providers
@@ -525,6 +524,7 @@ Source data for the model binding system is provided by value providers.  To cre
 - Register the factory class in Startup.ConfigureServices.
 
 To register the provider to be used after all the other providers:
+
 ```c#
 services
     .AddMvcOptions(options =>
@@ -534,6 +534,7 @@ services
 ```
 
 To add the provider as the first provider to be used.
+
 ```c#
 services
     .AddMvcOptions(options =>
@@ -596,6 +597,7 @@ Complex types must have a public default constructor and public writable propert
 - For complex properties the prefix is the property name.
 
 e.g. The First name will be matched to a source in the request labeled customer.FirstName
+
 ```c#
 public class CustomerBookingsByNameRequestRaw
 {
@@ -892,8 +894,6 @@ Serializes/Deserializes a verified user.  Depending on the the type of applicati
 
 The outcome of the Challenge or Authentication subsystem is the population of the __User__ object on the __HttpContext__. This is a __ClaimsPrincipal__ that contains a record of the claims were reported for the authenticated user.
 
-
-
 ## Authorization
 
 ## Configuration
@@ -908,6 +908,8 @@ Configuration in asp.net core is loaded using one of more configuration provider
 
 The providers that are used are defined by the hosts as configuration is an environmental concern.  Providers are layered over each other and a provider that contains the same setting as a provider that has already been loaded will override any setting from a previously loaded provider.
 
+N. Custom Configuration can be implemented by creating a class the inherits _ConfigurationProvider_.
+
 The default webhost uses the following providers:
 
 - appsettings.json
@@ -917,8 +919,185 @@ The default webhost uses the following providers:
 - Command-line argument
 
 
+
+Hierarchical values can be accesses by using a :
+
+e.g.
+
+```C#
+
+var title = Configuration["Position:Title"];
+
+```
+
+To override a hierarchical setting with an environment variable a __ ( double underscore ) should be used.
+
+e.g.
+
+```
+set POSITION__TITLE="Director"
+```
+
+### KeyVault
+
+KeyVault can be plugged in as a Configuration provider. __Note__ the settings for the KeyVault need to be defined in configuration.  
+
+e.g using managed identities:
+
+```C#
+// using Azure.Security.KeyVault.Secrets;
+// using Azure.Identity;
+// using Azure.Extensions.AspNetCore.Configuration.Secrets;
+
+
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration((context, config) =>
+        {
+            if (context.HostingEnvironment.IsProduction())
+            {
+                var builtConfig = config.Build();
+                var secretClient = new SecretClient(
+                    new Uri($"https://{builtConfig["KeyVaultName"]}.vault.azure.net/"),
+                    new DefaultAzureCredential());
+                config.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
+            }
+        })
+        .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+```
+
 ## Logging
 
-## Hosts
+__Microsoft.Extensions.Logging__ provides the infrastructure for logging within .Net Core. The most important interfaces and classes being:
 
-## References
+- ILogger
+- ILoggerFactory
+- ILoggerProvider
+- LoggerFactory
+
+### ILogger
+
+Allows a message to be written from the application to all the LogProviders the support the following log levels
+
+| Severity   | Level       | Purpose                                   |
+|----------- |------------ |------------------------------------------ |
+| 0          | Trace       | Development tracing purposes              |
+| 1          | Debug       | Short term debugging purposes             |
+| 2          | Information | Log messages for the flow of the app      |
+| 3          | Warning     | Abnormal or unexpected events             |
+| 4          | Error       | Error message                             |
+| 5          | Critical    | Failure that need immediate attention     |
+
+
+The ILogger supports the following logging methods:
+
+- LogInformation
+- LogCritical
+- LogDebug
+- LogError
+- LogTrace
+- LogWarning
+
+### ILoggerFactory
+
+Factory interface for creating an __ILogger__ instance and adding the __ILoggerProvider__ instance.  The Logging API includes a built-in _LoggerFactory_ that is used to add instances of the _ILogProvider_ and retrieve _ILogger_ instances for the specified category ( Categories are classes ).
+
+### ILoggerProvider
+
+Creates and manages an appropriate logger specified by the logging category.  A logger provider write the log messages to the particular medium that it is an abstraction for. 
+
+### Default Providers
+
+By default the following providers are setup in an asp.net core application:
+
+- Console
+- Debug
+- EventSource
+
+You can configure your own providers in the Host configuration
+
+e.g.
+
+```C#
+
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+    .ConfigureLogging(logBuilder =>
+    {
+        logBuilder.ClearProviders(); // removes all providers from LoggerFactory
+        logBuilder.AddConsole();  
+        logBuilder.AddTraceSource("Information, ActivityTracing"); // Add Trace listener provider
+    })
+    .UseStartup<Startup>();
+
+```
+
+### Logging configuration
+
+Via configuration what log messages are written to the log files regardless of what is written in the code can be configured. This is defined at the __Category__ level and can be set as a default and for each provider.
+
+e.g.
+
+```json
+{
+	...
+
+	"Logging": {
+		"LogLevel": {
+			"Default": "Debug",
+			"System": "Information",
+			"Microsoft": "Information"
+		},
+		"EventLog": {
+			"LogLevel": {
+				"Default": "Information"
+			}
+		}
+	}
+	...
+}
+```
+
+### Logging in a Controller
+
+```c#
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+ 
+namespace DotnetApplication.Api.Controllers
+{
+	[ApiController]
+	[Route("api/[controller]")]
+	public class TodoController : ControllerBase
+    {
+		private readonly ILogger logger;
+		private readonly TodoItemStore store;
+ 
+		public TodoController(ILogger<TodoController> logger, TodoItemStore store)
+		{
+			this.logger = logger;
+			this.store = store;
+		}
+
+
+		[HttpGet]
+		public IActionResult Get()
+		{
+
+			try 
+			{
+				logger.LogInformation(someEventId, "some text for id: {someUsefulId}", someUsefulId);
+				
+				...
+
+			} catch (Exception someException){
+				logger.LogError(eventId, someException, "rying step {stepId}", stepId);
+			}
+		}
+       ... 
+   }
+}
+```
+
