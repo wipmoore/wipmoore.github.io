@@ -7,7 +7,7 @@ categories:
 - [DbContext](#dbcontext)
 - [Models](#models)
 - [Querying Data](#querying-data)
-
+- [Saving Data](#saving-data)
 
 ## DbContext
 
@@ -335,5 +335,70 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .UseLazyLoadingProxies()
         .UseSqlServer(myConnectionString);
+
+```
+
+## Saving Data
+
+The DbContext has a change tracker that tracks changes made to entities when __SaveChanges__ is called it is used to identify what data modification statement need to be made against the database.
+
+
+```c#
+using (var context = new BloggingContext())
+{
+    var blog = new Blog { Url = "http://example.com" };
+    context.Blogs.Add(blog);
+    context.SaveChanges();
+}
+```
+
+```c#
+using (var context = new BloggingContext())
+{
+    var blog = context.Blogs.First();
+    blog.Url = "http://example.com/blog";
+    context.SaveChanges();
+}
+```
+
+```c#
+using (var context = new BloggingContext())
+{
+    var blog = context.Blogs.First();
+    context.Blogs.Remove(blog);
+    context.SaveChanges();
+}
+```
+
+SaveChanges is usually a transactional operation ( this is provider dependent ) so all changes are applied within a transaction.
+
+### Transaction
+
+By default only SaveChanges is protected by a transaction, it should not be uncommon to want to load data and validate before applying changes and wanting this all to be wrapped within the protection of a transaction.  This is achieve by accessing the Transaction property of the Context's Database.
+
+```c#
+using var context = new BloggingContext();
+using var transaction = context.Database.BeginTransaction();
+
+try
+{
+    context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });
+    context.SaveChanges();
+
+    context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/visualstudio" });
+    context.SaveChanges();
+
+    var blogs = context.Blogs
+        .OrderBy(b => b.Url)
+        .ToList();
+
+    // Commit transaction if all commands succeed, transaction will auto-rollback
+    // when disposed if either commands fails
+    transaction.Commit();
+}
+catch (Exception)
+{
+    // TODO: Handle failure
+}
 
 ```
